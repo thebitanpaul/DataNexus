@@ -1,0 +1,5 @@
+pyspark
+delta-spark
+great-expectations
+confluent-kafka
+apache-airflow
