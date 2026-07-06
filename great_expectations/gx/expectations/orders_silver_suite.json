@@ -1,0 +1,59 @@
+{
+  "expectations": [
+    {
+      "id": "d9fbaa84-a77e-49dc-828e-012b3a7e2748",
+      "kwargs": {
+        "column": "order_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "a4e2666c-8fbe-427c-ba19-b123639a0b8e",
+      "kwargs": {
+        "column": "customer_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    },
+    {
+      "id": "6201d165-1677-4321-b4c0-d2f339ae476f",
+      "kwargs": {
+        "column": "order_amount",
+        "min_value": 0.0,
+        "strict_min": true
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "05a218f9-2471-4eb4-8906-b1854103390a",
+      "kwargs": {
+        "column": "order_purchase_date",
+        "max_value": "2019-01-01T00:00:00",
+        "min_value": "2016-01-01T00:00:00"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_be_between"
+    },
+    {
+      "id": "92c8f352-05df-4b29-b4da-0f63970407e9",
+      "kwargs": {
+        "column": "customer_unique_id"
+      },
+      "meta": {},
+      "severity": "critical",
+      "type": "expect_column_values_to_not_be_null"
+    }
+  ],
+  "id": "82a60876-6c5b-4ce1-a13f-c52830ff28fb",
+  "meta": {
+    "great_expectations_version": "1.18.2"
+  },
+  "name": "orders_silver_suite",
+  "notes": null
+}
