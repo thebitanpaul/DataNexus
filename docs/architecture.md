@@ -62,3 +62,21 @@ the real Bronze/Silver/Gold Spark jobs. In production, the `PythonOperator` task
 bodies would be replaced with `DatabricksRunNowOperator` calls that trigger the
 actual Databricks notebooks/jobs, with Airflow only handling scheduling, retries,
 and the DQ branch gate — not the transforms themselves.
+
+## Streaming Ingestion (Phase 5)
+
+The `kafka/` directory runs a local single-node Kafka broker (KRaft mode, no
+ZooKeeper) via Docker (`docker-compose.yml`), reachable at `localhost:9092`
+with no authentication.
+
+- `producer.py` sends 100 simulated order events to the `new_orders` topic at
+  1 event/sec.
+- `consumer.py` reads `new_orders`, filters events where `amount > 50`, and
+  writes the matches to `high_value_orders.json` as a growing JSON
+  micro-batch (a stand-in for a Silver landing zone).
+
+A local broker was used instead of Confluent Cloud to avoid requiring a card
+signup. The client code and Kafka concepts (topics, producer/consumer,
+delivery callbacks, consumer groups, offsets) are the same as they would be
+against a managed cluster — swapping `config.py`'s `bootstrap.servers` (and
+adding auth) is all that would change in production.
