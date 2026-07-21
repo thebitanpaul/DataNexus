@@ -2,7 +2,7 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-<img width="1254" height="1254" alt="Image" src="https://github.com/user-attachments/assets/3646ea6d-11a5-41ed-902f-54a6521957df" />
+<img alt="Image" src="https://res.cloudinary.com/b0tb1mho/image/upload/v1784625322/ttiyho5gr7owdie5qntq.webp" />
 
 
 
@@ -39,7 +39,7 @@ flowchart TD
     DAG -.orchestrates.-> medallion
 ```
 
-<img width="1672" height="941" alt="Image" src="https://github.com/user-attachments/assets/a39dd581-7330-4e74-82be-192d41c805e8" />
+<img alt="Image" src="https://res.cloudinary.com/b0tb1mho/image/upload/v1784624166/d3r63o4aqiremsmgye4u.webp" />
 
 
 
@@ -61,7 +61,7 @@ flowchart TD
 
 
 
-<img width="1672" height="941" alt="Image" src="https://github.com/user-attachments/assets/5091ba09-f807-4f96-9798-fe5196e13c58" />
+<img alt="Image" src="https://res.cloudinary.com/b0tb1mho/image/upload/v1784624171/hlwbrqapphua9wrt0fxk.webp" />
 
 
 ---
@@ -82,7 +82,7 @@ CapstoneProject/
 
 ## The Gold Layer (what the pipeline is *for*)
 
-<img width="1672" height="941" alt="Image" src="https://github.com/user-attachments/assets/b7ed8445-736c-4e1d-9a81-4db3c8fec648" />
+<img alt="Image" src="https://res.cloudinary.com/b0tb1mho/image/upload/v1784624677/w9m5scpfsgbahkzhz5q6.webp" />
 
 | Table | Grain | Business question |
 |---|---|---|
