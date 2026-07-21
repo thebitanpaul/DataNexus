@@ -177,4 +177,10 @@ Cleansing decisions applied in Silver:
 
 Licensed under the **Apache License 2.0** — see the [LICENSE](LICENSE) file, or the canonical text at <https://www.apache.org/licenses/LICENSE-2.0>.
 
-Copyright &copy; 2026 phiUture
+---
+
+<div align="center">
+
+**2026 · © phiUture · All Rights Reserved**
+
+</div>
