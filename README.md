@@ -2,6 +2,10 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
+<img width="1254" height="1254" alt="Image" src="https://github.com/user-attachments/assets/3646ea6d-11a5-41ed-902f-54a6521957df" />
+
+
+
 A production-style data engineering pipeline built on the [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). It ingests raw CSVs, refines them through a **Bronze → Silver → Gold** medallion architecture, enforces **data quality** with automated checks, **orchestrates** the flow with Apache Airflow, and streams **real-time orders** through Kafka.
 
 ---
@@ -35,6 +39,11 @@ flowchart TD
     DAG -.orchestrates.-> medallion
 ```
 
+<img width="1672" height="941" alt="Image" src="https://github.com/user-attachments/assets/a39dd581-7330-4e74-82be-192d41c805e8" />
+
+
+
+
 **The medallion idea:** three stages of increasing trust. *Bronze* is a faithful, untouched copy of the source (plus audit columns). *Silver* is cleaned and joined. *Gold* is aggregated into the specific numbers the business consumes. If a number looks wrong, you re-derive downward from the layer you trust.
 
 ---
@@ -49,6 +58,11 @@ flowchart TD
 | Streaming | Apache Kafka (local, KRaft mode, Docker) + `confluent-kafka` client |
 | Language | Python / pandas |
 | Version control | Git + GitHub |
+
+
+
+<img width="1672" height="941" alt="Image" src="https://github.com/user-attachments/assets/5091ba09-f807-4f96-9798-fe5196e13c58" />
+
 
 ---
 
@@ -67,6 +81,8 @@ CapstoneProject/
 ---
 
 ## The Gold Layer (what the pipeline is *for*)
+
+<img width="1672" height="941" alt="Image" src="https://github.com/user-attachments/assets/b7ed8445-736c-4e1d-9a81-4db3c8fec648" />
 
 | Table | Grain | Business question |
 |---|---|---|
