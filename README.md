@@ -175,7 +175,8 @@ Cleansing decisions applied in Silver:
 
 ## License
 
-Licensed under the **Apache License 2.0** — see the [LICENSE](LICENSE) file, or the canonical text at <https://www.apache.org/licenses/LICENSE-2.0>.
+This project is licensed under the [Apache-2.0](LICENSE).
+See the LICENSE file for full license text.
 
 ---
 
