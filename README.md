@@ -2,6 +2,10 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
+<img alt="Image" src="https://res.cloudinary.com/b0tb1mho/image/upload/v1784625322/ttiyho5gr7owdie5qntq.webp" />
+
+
+
 A production-style data engineering pipeline built on the [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). It ingests raw CSVs, refines them through a **Bronze → Silver → Gold** medallion architecture, enforces **data quality** with automated checks, **orchestrates** the flow with Apache Airflow, and streams **real-time orders** through Kafka.
 
 ---
@@ -35,6 +39,11 @@ flowchart TD
     DAG -.orchestrates.-> medallion
 ```
 
+<img alt="Image" src="https://res.cloudinary.com/b0tb1mho/image/upload/v1784624166/d3r63o4aqiremsmgye4u.webp" />
+
+
+
+
 **The medallion idea:** three stages of increasing trust. *Bronze* is a faithful, untouched copy of the source (plus audit columns). *Silver* is cleaned and joined. *Gold* is aggregated into the specific numbers the business consumes. If a number looks wrong, you re-derive downward from the layer you trust.
 
 ---
@@ -49,6 +58,11 @@ flowchart TD
 | Streaming | Apache Kafka (local, KRaft mode, Docker) + `confluent-kafka` client |
 | Language | Python / pandas |
 | Version control | Git + GitHub |
+
+
+
+<img alt="Image" src="https://res.cloudinary.com/b0tb1mho/image/upload/v1784624171/hlwbrqapphua9wrt0fxk.webp" />
+
 
 ---
 
@@ -67,6 +81,8 @@ CapstoneProject/
 ---
 
 ## The Gold Layer (what the pipeline is *for*)
+
+<img alt="Image" src="https://res.cloudinary.com/b0tb1mho/image/upload/v1784624677/w9m5scpfsgbahkzhz5q6.webp" />
 
 | Table | Grain | Business question |
 |---|---|---|
@@ -159,6 +175,45 @@ Cleansing decisions applied in Silver:
 
 ## License
 
-Licensed under the **Apache License 2.0** — see the [LICENSE](LICENSE) file, or the canonical text at <https://www.apache.org/licenses/LICENSE-2.0>.
+This project is licensed under the [Apache-2.0](LICENSE).
+See the LICENSE file for full license text.
 
-Copyright &copy; 2026 Bitan Paul
+---
+
+## About phiUture
+
+
+Welcome to phiUture — Beautiful Technology. Centered Around You. Shaping Tomorrow.
+
+Inspired by the Golden Ratio (φ), our name represents beautiful, intelligent engineering, while the "U" stands for You—placing people at the center of every solution we build.
+
+phiUture is an AI-first software company creating intelligent products, automation systems, and modern digital experiences. This channel documents the journey of building practical AI solutions, from concept to deployment.
+
+```text
+Here you'll find:
+• AI applications and product demos
+• AI agents and automation workflows
+• Web and mobile app showcases
+• Machine Learning and Data Engineering projects
+• Product launches and development insights
+• UI/UX and software engineering content
+• Tutorials, experiments, and future innovations
+```
+
+| Personal | Business | Artist |
+|----------|----------|--------|
+| [![GitHub](https://img.shields.io/badge/GitHub-thebitanpaul-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/thebitanpaul) | [![Website](https://img.shields.io/badge/Website-phiUture-000000?style=for-the-badge&logo=googlechrome&logoColor=white)](https://phiuture.com) | [![YouTube](https://img.shields.io/badge/YouTube-thebitanpaul-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@thebitanpaul) |
+| [![LinkedIn](https://img.shields.io/badge/LinkedIn-thebitanpaul-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/thebitanpaul) | [![YouTube](https://img.shields.io/badge/YouTube-phiUture-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@phiuture) | [![Spotify](https://img.shields.io/badge/Spotify-1DB954?style=for-the-badge&logo=spotify&logoColor=white)](https://open.spotify.com/artist/6ghDcCBlKzJIgm3e586jpV) |
+| [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/thebitanpaul) | [![Google Play](https://img.shields.io/badge/Google_Play-Developer-34A853?style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/dev?id=6358474525178045834&hl=en) | [![YouTube Music](https://img.shields.io/badge/YouTube_Music-FF0000?style=for-the-badge&logo=youtubemusic&logoColor=white)](https://music.youtube.com/playlist?list=OLAK5uy_km3cjEB2zl59Etcgv9UBKWw800O9G3NdE) |
+| [![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://facebook.com/thebitanpaul) | [![Email](https://img.shields.io/badge/Business_Email-thephiuture%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:thephiuture@gmail.com) | [![Amazon Music](https://img.shields.io/badge/Amazon_Music-46C3D0?style=for-the-badge&logo=amazonmusic&logoColor=white)](https://music.amazon.com/albums/B0G52QMYDC) |
+| [![X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/thebitanpaul_) |  | [![Apple Music](https://img.shields.io/badge/Apple_Music-FA243C?style=for-the-badge&logo=applemusic&logoColor=white)](https://music.apple.com/us/artist/thebitanpaul/1858534880) |
+| [![Snapchat](https://img.shields.io/badge/Snapchat-FFFC00?style=for-the-badge&logo=snapchat&logoColor=000000)](https://snapchat.com/t/UgO0Iywr) |  | [![JioSaavn](https://img.shields.io/badge/JioSaavn-2BC5B4?style=for-the-badge&logo=jiosaavn&logoColor=white)](https://www.jiosaavn.com/artist/thebitanpaul-songs/zuo0NgC65gQ_) |
+| [![Email](https://img.shields.io/badge/Personal_Email-thebitanpaul%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:thebitanpaul@gmail.com) |  |  |
+
+
+
+<div align="center">
+
+**2026 · © phiUture · All Rights Reserved**
+
+</div>
