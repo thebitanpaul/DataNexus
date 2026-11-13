@@ -22,7 +22,7 @@
 ## Gold Layer Exclusion Decisions
 
 ### Revenue and Lifetime Value — Cancelled / Unavailable Orders
-- **Decision:** Orders with `order_status` of `cancelled` or `unavailable` are excluded from all revenue aggregations and customer lifetime value (LTV) calculations.
+- **Decision:** Orders with `order_status` of `canceled` (the dataset's spelling) or `unavailable` are excluded from all revenue aggregations and customer lifetime value (LTV) calculations.
 - **Rationale:** Cancelled and unavailable orders do not result in a completed payment. Including them would inflate GMV and LTV figures, misrepresenting actual business performance.
 
 ### Lifetime Value — Customer Granularity
@@ -34,5 +34,5 @@
 ## Gold Table Optimisation
 
 ### Z-ORDER by `order_purchase_date`
-- All Gold Delta tables are Z-ORDERed on `order_purchase_date`.
+- The date-grained Gold tables (`daily_revenue_by_category`, `rolling_7day_order_volume`) are OPTIMIZEd and Z-ORDERed on `order_purchase_date`. `top_customers` has no date column and is not Z-ordered.
 - **Rationale:** Most analytical queries filter or sort by purchase date (time-series trend, cohort, period-over-period). Z-ORDER co-locates data by this column in Delta's file layout, reducing files scanned and improving query latency.
