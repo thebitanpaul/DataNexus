@@ -23,6 +23,26 @@ Read these before non-trivial work:
 | `great_expectations/dq_checks.py` | GX 1.x suite (5 checks) + Data Docs | Local Python, reads `great_expectations/data/orders_dq.csv` |
 | `airflow/` | Astro CLI project; DAG `dags/ecommerce_pipeline.py` | Docker via `astro dev start` (UI on :8080) |
 | `kafka/` | `docker-compose.yml` (KRaft broker on :9092), `producer.py`, `consumer.py`, `config.py` | Docker + local Python |
+| `scripts/` | `fetch_data.sh` (gets the gitignored data), `build_orders_dq.py` | Local bash + Python |
+
+## Required data files (gitignored, so fetch them first on a fresh clone)
+The project won't run until these exist. **On a fresh clone, run this before anything else:**
+```bash
+bash scripts/fetch_data.sh        # needs curl, unzip, and python3 with pandas (or PYTHON=<venv python>)
+```
+| File | Location | Source |
+|---|---|---|
+| `olist_orders_dataset.csv` | `airflow/include/data/` | Kaggle `olistbr/brazilian-ecommerce` (public URL, no login) |
+| `olist_customers_dataset.csv` | `airflow/include/data/` | same zip |
+| `olist_products_dataset.csv` | `airflow/include/data/` | same zip |
+| `olist_order_items_dataset.csv` | `airflow/include/data/` | same zip |
+| `orders_dq.csv` | `great_expectations/data/` | Built locally by `scripts/build_orders_dq.py` (an exact pandas mirror of notebook 04) |
+
+The script is idempotent: it skips the download when the SHA-256 checksums already match.
+Pass `--force` to download again. Manual fallback:
+`curl -L -o olist.zip https://www.kaggle.com/api/v1/datasets/download/olistbr/brazilian-ecommerce`, then
+`unzip -j olist.zip <the 4 files> -d airflow/include/data`. For Databricks (phases 1–2), upload the
+same 4 CSVs to the volume `workspace.bronze.raw`.
 
 ## Commands
 ```bash
@@ -73,7 +93,7 @@ There is no unified test suite, linter, or build step. Notebooks cannot run loca
 ## Guardrails
 - **Never commit data or secrets.** `.gitignore` excludes `*.csv`, `*.parquet`, `.env`,
   `*.key`, venvs, `great_expectations/gx/uncommitted/`, Airflow logs and the DB. The Olist CSVs
-  and `orders_dq.csv` must be supplied by hand on each machine (see `docs/SETUP_MAC.md`).
+  and `orders_dq.csv` come from `scripts/fetch_data.sh` (see "Required data files" above).
 - The internal technical design document was deliberately removed from this public repo
   (it held confidential details). Don't re-add it or reproduce its contents.
 - Keep documentation free of machine-specific absolute paths. Use repo-relative paths.

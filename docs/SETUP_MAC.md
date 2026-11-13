@@ -25,20 +25,24 @@ Claude Code picks up `CLAUDE.md` automatically. Detailed context is in `docs/`.
 
 ## 3. Restore the data files (git doesn't carry them)
 
-`*.csv` is gitignored. Copy these from the old machine, or regenerate them:
-
-| File | Needed by | How to get it |
-|---|---|---|
-| `airflow/include/data/olist_orders_dataset.csv` | Airflow DAG | Kaggle Olist dataset |
-| `airflow/include/data/olist_customers_dataset.csv` | Airflow DAG | Kaggle Olist dataset |
-| `airflow/include/data/olist_products_dataset.csv` | Airflow DAG | Kaggle Olist dataset |
-| `airflow/include/data/olist_order_items_dataset.csv` | Airflow DAG | Kaggle Olist dataset |
-| `great_expectations/data/orders_dq.csv` | `dq_checks.py` | Run notebook 04 in Databricks. It writes to `/Volumes/workspace/bronze/raw/orders_dq.csv`. Download it from there. |
+`*.csv` is gitignored. One command fetches and verifies everything:
 
 ```bash
-mkdir -p airflow/include/data great_expectations/data
+python3 -m pip install --user pandas      # or point PYTHON= at a venv that has pandas
+bash scripts/fetch_data.sh                # e.g. PYTHON=great_expectations/venv/bin/python bash scripts/fetch_data.sh
 ```
-Leave `airflow/include/output/` alone. The DAG creates it.
+
+| File | Needed by | Where the script gets it |
+|---|---|---|
+| `airflow/include/data/olist_orders_dataset.csv` | Airflow DAG | Kaggle public zip (`olistbr/brazilian-ecommerce`, no login needed) |
+| `airflow/include/data/olist_customers_dataset.csv` | Airflow DAG | same zip |
+| `airflow/include/data/olist_products_dataset.csv` | Airflow DAG | same zip |
+| `airflow/include/data/olist_order_items_dataset.csv` | Airflow DAG | same zip |
+| `great_expectations/data/orders_dq.csv` | `dq_checks.py` | Built by `scripts/build_orders_dq.py`, which matches the Databricks notebook-04 export exactly |
+
+The script checks each CSV against the SHA-256 checksum of the original copies and skips the
+download if they are already present. Use `--force` to download again. Leave
+`airflow/include/output/` alone. The DAG creates it.
 
 Databricks tables, the volume, and the uploaded CSVs live in the Databricks workspace,
 not on the PC, so nothing needs to migrate for phases 1–2.
